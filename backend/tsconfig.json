@@ -4,7 +4,6 @@
     "module": "commonjs",
     "lib": ["es2015"],
     "strict": false,
-    "baseUrl": "./src",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
