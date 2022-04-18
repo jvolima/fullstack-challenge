@@ -9,6 +9,8 @@ export class ListAllUseCase {
   ) {}
 
   async execute() {
-    console.log("Passei aqui");
+    const articles = await this.articlesRepository.listAll();
+
+    return articles;
   } 
 }

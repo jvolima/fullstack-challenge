@@ -1,30 +1,19 @@
-version: "3.9"
+version: '3'
 
 services:
-  database:
-    image: postgres
-    container_name: database_challenges
-    ports: 
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=challenge
-      - POSTGRES_PASSWORD=database
-      - POSTGRES_DB=database
-    volumes:
-      - pgdata:/data/postgres
+  # Application
 
-  app:
-    build: .
-    container_name: fullstack
-    ports: 
-      - 3333:3333
-    volumes: 
-      - .:/usr/app
-    links: 
-      - database
-    depends_on:
-      - database
+  database:
+    image: 'bitnami/postgresql'
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=app
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
 
 volumes:
-  pgdata:
+  postgresql_data:
     driver: local

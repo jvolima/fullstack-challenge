@@ -6,8 +6,8 @@ export class ListAllController {
   async handle(request: Request, response: Response) {
     const listAllUseCase = container.resolve(ListAllUseCase);
 
-    await listAllUseCase.execute();
+    const articles = await listAllUseCase.execute();
 
-    return response.send("ok");
+    return response.json(articles);
   }
 }
