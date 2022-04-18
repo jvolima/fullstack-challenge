@@ -1,9 +1,14 @@
-import { api } from "../../../../services/api";
+import { inject, injectable } from "tsyringe";
+import { IArticlesRepository } from "../../repositories/IArticlesRepository";
 
+@injectable()
 export class ListAllUseCase {
-  async execute() {
-    const response = await api.get("articles?_limit=5");
+  constructor (
+    @inject("ArticlesRepository")
+    private articlesRepository: IArticlesRepository
+  ) {}
 
-    console.log(response.data);
+  async execute() {
+    console.log("Passei aqui");
   } 
 }

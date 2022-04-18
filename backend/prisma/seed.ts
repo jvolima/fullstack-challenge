@@ -13,11 +13,21 @@ interface Article {
 }
 
 async function main() {
-  const response = await api.get("articles");
+  const response = await api.get("articles?_limit=100");
 
   const articles = response.data as Article[];
 
   await Promise.all(articles.map(async (article) => {
+    const articleAlreadyExists = await prisma.article.findUnique({
+      where: {
+        id: article.id
+      }
+    });
+
+    if(articleAlreadyExists) {
+      return;
+    }
+
     await prisma.article.create({
       data: {
         id: article.id,

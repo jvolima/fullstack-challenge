@@ -1,3 +1,5 @@
+import "reflect-metadata";
+import "../container";
 import cron from "node-cron";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
@@ -11,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 app.use(routes);
 //0 0 9 * * * 
-cron.schedule("0 * * * * *", () => {
+cron.schedule("0 * * * * *", async () => {  
   
 });
 

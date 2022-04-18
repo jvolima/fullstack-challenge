@@ -3,19 +3,19 @@ version: "3.9"
 services:
   database:
     image: postgres
-    container_name: database_challenge
+    container_name: database_challenges
     ports: 
       - 5432:5432
     environment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=challenge
-      - POSTGRES_DB=challenge
+      - POSTGRES_USER=challenge
+      - POSTGRES_PASSWORD=database
+      - POSTGRES_DB=database
     volumes:
       - pgdata:/data/postgres
 
   app:
     build: .
-    container_name: challenge
+    container_name: fullstack
     ports: 
       - 3333:3333
     volumes: 
