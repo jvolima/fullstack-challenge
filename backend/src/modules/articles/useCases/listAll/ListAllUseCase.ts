@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe";
-import { IArticlesRepository } from "../../repositories/IArticlesRepository";
+import { IArticlesRepository, PaginationQueries } from "../../repositories/IArticlesRepository";
 
 @injectable()
 export class ListAllUseCase {
@@ -8,8 +8,8 @@ export class ListAllUseCase {
     private articlesRepository: IArticlesRepository
   ) {}
 
-  async execute() {
-    const articles = await this.articlesRepository.listAll();
+  async execute({ _start, _limit }: PaginationQueries) {
+    const articles = await this.articlesRepository.listAll({ _start, _limit });
 
     return articles;
   } 
