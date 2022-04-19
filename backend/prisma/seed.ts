@@ -1,7 +1,7 @@
 import { prisma } from "../src/prisma";
 import { api } from "../src/services/api";
 
-interface Article {
+export interface Article {
   id: number;
   title: string;
   url: string;

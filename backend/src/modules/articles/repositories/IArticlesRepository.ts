@@ -7,4 +7,5 @@ export interface PaginationQueries {
 
 export interface IArticlesRepository {
   listAll({ _start, _limit }: PaginationQueries): Promise<Article[]>;
+  findById(id: number): Promise<Article>;
 }
