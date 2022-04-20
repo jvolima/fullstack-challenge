@@ -3,7 +3,7 @@ import { IArticlesRepository } from "../../repositories/IArticlesRepository";
 import { ArticleNotFound } from "./errors/ArticleNotFound";
 
 @injectable()
-export class FindByIdUseCase {
+export class DeleteByIdUseCase {
   constructor (
     @inject("ArticlesRepository")
     private articlesRepository: IArticlesRepository
@@ -16,6 +16,6 @@ export class FindByIdUseCase {
       throw new ArticleNotFound();
     }
 
-    return article;
+    await this.articlesRepository.deleteById(id);
   }
 }

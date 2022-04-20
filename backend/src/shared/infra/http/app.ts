@@ -1,4 +1,5 @@
 import "reflect-metadata";
+import "express-async-errors";
 import "../container";
 import cron from "node-cron";
 import express, { NextFunction, Request, Response } from "express";

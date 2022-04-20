@@ -52,4 +52,12 @@ export class ArticlesRepository implements IArticlesRepository {
 
     return article;
   }
+
+  async deleteById(id: number): Promise<void> {
+    await prisma.article.delete({
+      where: {
+        id
+      }
+    });
+  }
 }

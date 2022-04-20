@@ -6,9 +6,11 @@
 
 - [x] (GET)/articles/{id}: Obter a informação somente de um artigo
 
+- [x] CRON para adicionar novos artigos todo dia às 9 horas da manhã.
+
 ## Milha extra
 - [] (POST)/articles/: Adicionar um novo artigo
 
 - [] (PUT)/articles/{id}: Atualizar um artigo baseado no id
 
-- [] (DELETE)/articles/{id}: Remover um artigo baseado no id
+- [x] (DELETE)/articles/{id}: Remover um artigo baseado no id
