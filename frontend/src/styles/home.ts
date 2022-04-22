@@ -63,8 +63,28 @@ export const Container = styled.main`
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   hr {
     border: 1px solid var(--yellow-600);
+    width: 100%;
+  }
+
+  button {
+    margin: 3rem 0;
+    background: transparent;
+    border: 1px solid var(--yellow-600);
+    padding: 0.75rem 1.25rem;
+    font-size: 1.25rem;
+    color: var(--yellow-600);
+
+    &:hover {
+      background: var(--yellow-600);
+      color: #cccccc;
+      transition: 0.3s;
+    }
   }
 `
