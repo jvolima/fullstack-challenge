@@ -8,8 +8,8 @@ export class ListAllUseCase {
     private articlesRepository: IArticlesRepository
   ) {}
 
-  async execute({ _start, _limit }: PaginationQueries) {
-    const articles = await this.articlesRepository.listAll({ _start, _limit });
+  async execute({ _start, _limit, _orderBy }: PaginationQueries) {
+    const articles = await this.articlesRepository.listAll({ _start, _limit, _orderBy });
 
     return articles;
   } 

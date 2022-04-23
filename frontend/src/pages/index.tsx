@@ -9,13 +9,14 @@ import { Article, ArticlesProps } from '../components/Article';
 
 export default function Home() {
   const [page, setPage] = useState(0);
+  const [orderBy, setOrderBy] = useState("desc");
   const [articles, setArticles] = useState<ArticlesProps[]>([]);
   const limit = 10;
 
   useEffect(() => {
     async function loadData() {
-      const response = await api.get(`articles?_start=${page}&_limit=${limit}`);
-      setArticles(response.data);
+      const response = await api.get(`articles?_start=${page}&_limit=${limit}&_orderBy=${orderBy}`);
+      setArticles(oldState => [...oldState, ...response.data]);
     }
 
     loadData();
