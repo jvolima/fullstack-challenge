@@ -8,22 +8,22 @@ import { useEffect, useState } from 'react';
 import { Article, ArticlesProps } from '../components/Article';
 
 export default function Home() {
-  const [page, setPage] = useState(0);
+  const [limit, setLimit] = useState(10);
   const [orderBy, setOrderBy] = useState("desc");
   const [articles, setArticles] = useState<ArticlesProps[]>([]);
-  const limit = 10;
+  const page = 0;
 
   useEffect(() => {
     async function loadData() {
       const response = await api.get(`articles?_start=${page}&_limit=${limit}&_orderBy=${orderBy}`);
-      setArticles(oldState => [...oldState, ...response.data]);
+      setArticles(response.data);
     }
 
     loadData();
-  }, [page]);
+  }, [limit, orderBy]);
 
   function loadMore() {
-    setPage(oldState => oldState + 10);
+    setLimit(oldState => oldState + 10);
   }
 
   return (
@@ -36,6 +36,13 @@ export default function Home() {
           <div className="fake-input">
             <input type="text" name="article" placeholder="Search" />
             <button><FiSearch color="#1E2022"/></button>
+          </div>
+          <div className="dropdown">
+            <button className="dropbtn">Escolha um filtro</button>
+            <div className="dropdown-content">
+              <button onClick={() => setOrderBy("desc")}>Mais recentes</button>
+              <button onClick={() => setOrderBy("asc")}>Mais antigos</button>
+            </div>
           </div>
         </section>
         <div className="logo">
