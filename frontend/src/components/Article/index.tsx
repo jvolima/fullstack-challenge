@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { Container } from "./styles";
 
 export interface ArticlesProps {
@@ -18,13 +19,19 @@ export function Article({
   publishedAt,
   summary,
   title,
-  url
+  url,
 }: ArticlesProps) {
   const publishedAtFormated = new Intl.DateTimeFormat("en-US", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric"
   }).format(new Date(publishedAt));
+
+  const router = useRouter();
+
+  function handleSeeMore() {
+    router.push(url);
+  }
 
   return (
     <Container>
@@ -33,7 +40,7 @@ export function Article({
         <h2>{title}</h2>
         <time>{publishedAtFormated}</time>
         <p>{summary}</p>
-        <button>See more</button>
+        <button onClick={handleSeeMore}>See more</button>
       </div>
     </Container>
   )

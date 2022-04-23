@@ -21,6 +21,10 @@ export default function Home() {
     loadData();
   }, [page]);
 
+  function loadMore() {
+    setPage(oldState => oldState + 10);
+  }
+
   return (
     <>
       <Head>
@@ -54,7 +58,7 @@ export default function Home() {
             />
           ))
         }
-        <button>Load more</button>
+        <button onClick={loadMore}>Load more</button>
       </Container>
     </>
   )
